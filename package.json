@@ -18,6 +18,12 @@
   },
   "homepage": "https://github.com/mikevitelli/rememberDat#readme",
   "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "mysql": "^2.18.1",
     "node": "^15.0.1"
+  },
+  "devDependencies": {
+    "handlebars-helper-css": "^0.1.0"
   }
 }
