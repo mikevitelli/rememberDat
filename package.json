@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/mikevitelli/rememberDat/issues"
   },
-  "homepage": "https://github.com/mikevitelli/rememberDat#readme"
+  "homepage": "https://github.com/mikevitelli/rememberDat#readme",
+  "dependencies": {
+    "node": "^15.0.1"
+  }
 }
