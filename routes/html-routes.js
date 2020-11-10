@@ -11,7 +11,7 @@ module.exports = function(app) {
       res.redirect("/content-landing.html");
     }
     // if not take them to the signup page
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    res.sendFile(path.join(__dirname, "../public/startpage.html"));
   });
 
   app.get("/login", (req, res) => {
@@ -20,6 +20,10 @@ module.exports = function(app) {
       res.redirect("/members");
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
+  });
+
+  app.get("/signup", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
 
   // Here we've add our isAuthenticated middleware to this route.
