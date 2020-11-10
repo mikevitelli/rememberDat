@@ -16,6 +16,8 @@ function bingImageSearch(search) {
     }
   };
 
+  // AXIOS Request;
+  // =============:
   axios
     .request(options)
     .then(response => {
