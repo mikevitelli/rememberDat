@@ -27,12 +27,13 @@ function bingImageSearch(search) {
       const imageSRC = imageArray.map(value => value.thumbnailUrl);
       const imageLINK = imageArray.map(value => value.hostPageUrl);
       // - construct image objects from 3 arrays;
-      const images = imageALT.map((item, index) => ({
+      const imageObj = imageALT.map((item, index) => ({
         alt: item,
         src: imageSRC[index] || "",
         link: imageLINK[index] || ""
       }));
-      console.log(images);
+      // console.log(imagesObj);
+      return imageObj;
     })
     .catch(error => {
       console.error(error);
