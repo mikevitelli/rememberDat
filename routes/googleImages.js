@@ -12,9 +12,9 @@ const options = {
 
 axios
   .request(options)
-  .then((response) => {
+  .then(response => {
     console.log(response.data);
   })
-  .catch((error) => {
+  .catch(error => {
     console.error(error);
   });
