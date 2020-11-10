@@ -1,4 +1,6 @@
 // Requiring necessary npm packages
+require("dotenv").config();
+
 const express = require("express");
 const session = require("express-session");
 // Requiring passport as we've configured it
