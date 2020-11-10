@@ -2,9 +2,12 @@
 // Bing Image Search;
 // #############
 
+// - shuffler;
+const shuffle = require("../utils/shuffle.js");
+
 // Run any string into this function (search) to return image objects;
 // =============:
-function bingImageSearch(search) {
+const bingImageSearch = search => {
   const axios = require("axios").default;
   const options = {
     method: "GET",
@@ -32,12 +35,13 @@ function bingImageSearch(search) {
         src: imageSRC[index] || "",
         link: imageLINK[index] || ""
       }));
-      // console.log(imagesObj);
-      return imageObj;
+      const shuffledImageObj = shuffle(imageObj);
+      console.log(shuffledImageObj);
+      return shuffledImageObj;
     })
     .catch(error => {
       console.error(error);
     });
-}
+};
 // - Exports;
-module.exports = bingImageSearch();
+module.exports = bingImageSearch;
