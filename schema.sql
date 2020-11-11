@@ -3,4 +3,4 @@ DROP DATABASE IF EXISTS rememberDat_local;
 -- Creates the "blogger" database --
 CREATE DATABASE rememberDat_local;
 
-SELECT * FROM rememberdat_local.users;
+SELECT * FROM rememberdat_local.User;
