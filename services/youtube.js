@@ -1,4 +1,4 @@
-const youtubeAPIkey = "AIzaSyBgEdkUbHxjy56Ij2mu4mZMfMc7I8pL280";
+const youtubeAPIkey = process.env.YOUTUBE_KEY;
 
 const queryURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&key=${youtubeAPIkey}&type=video&q=${userData}`;
 
