@@ -15,24 +15,8 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/services/bing", () => {
-    const images = bingImageSearch("90s");
-    const body = document.getElementById("body");
-
-    function createImage(image) {
-      const img = document.createElement("img");
-      img.alt = image.alt;
-      img.src = image.src;
-      img.href = image.href;
-      img.width = "50";
-      img.height = "50";
-      console.log(img);
-      return img;
-    }
-
-    images.forEach(image => {
-      body.appendChild(createImage(image));
-    });
+  app.get("/api/services/bing", (req, res) => {
+    res.json(bingImageSearch("90s"));
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
