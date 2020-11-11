@@ -1,7 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
-// const giphy = require("../services/giphy.js");
+const bingImageSearch = require("../services/bing");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -12,6 +12,26 @@ module.exports = function(app) {
     res.json({
       email: req.user.email,
       id: req.user.id
+    });
+  });
+
+  app.get("/api/services/bing", () => {
+    const images = bingImageSearch("90s");
+    const body = document.getElementById("body");
+
+    function createImage(image) {
+      const img = document.createElement("img");
+      img.alt = image.alt;
+      img.src = image.src;
+      img.href = image.href;
+      img.width = "50";
+      img.height = "50";
+      console.log(img);
+      return img;
+    }
+
+    images.forEach(image => {
+      body.appendChild(createImage(image));
     });
   });
 

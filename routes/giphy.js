@@ -26,7 +26,7 @@ const options = {
   method: "GET",
   url: `https://api.giphy.com/v1/gifs/random?limit=2&api_key=${giphyKey}&tag=${searchString}`,
   headers: {
-    "x-rapidapi-key": "07058048ffmshe16787ad7b4eeffp1c88f9jsn4040b743a04a",
+    "x-rapidapi-key": process.env.API_KEY,
     "x-rapidapi-host": "google-search3.p.rapidapi.com"
   }
 };
