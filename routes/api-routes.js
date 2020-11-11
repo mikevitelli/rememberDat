@@ -16,6 +16,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/services/bing", (req, res) => {
+    console.log("test");
     res.json(bingImageSearch("90s"));
   });
 

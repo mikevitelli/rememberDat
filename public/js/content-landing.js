@@ -1,8 +1,11 @@
 $(document).ready(() => {
+  console.log("test");
   const rememberDat = $(".remember-dat");
   rememberDat.on("click", event => {
     event.preventDefault();
-    $.get("/api/services/bing").then(images => {
+
+    console.log("click");
+    $.get("/api/services/bing", images => {
       console.log(images);
       function createImage(image) {
         const img = document.createElement("img");
