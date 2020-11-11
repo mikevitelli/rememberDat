@@ -1,20 +1,6 @@
-/* Makes the calendar icon go from black to white */
-::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-}
-
-.form-group {
-  text-align: center;
-  font-family: "RANDOMFONT", Cursive;
-}
-
-/* Dangerous game, I'm playing right now but this makes both the start page 
-and the homepage create account forms centered in the middle of the page*/
-.container,
-form {
+.container {
   text-align: center;
   display: flexbox;
-
   margin: 0;
   position: absolute;
   top: 50%;
