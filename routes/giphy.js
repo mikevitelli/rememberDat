@@ -1,6 +1,6 @@
 // GIPHY API
 
-const giphyKey = "QZW2fQn2JVqIqSnBTL5uNajwBc3KR8qE";
+const giphyKey = process.env.GIPHY_KEY;
 const search = userData.replace(" ", "+");
 
 const queryURL = `https://api.giphy.com/v1/gifs/random?limit=2&api_key=${giphyKey}&tag=${search}`;
@@ -18,15 +18,13 @@ for (let i = 0; i < giphyTiles; i++) {
   });
 }
 
-
 const axios = require("axios").default;
 
-const search = "90s";
+const searchString = "90s";
 
 const options = {
   method: "GET",
-  url:
-  `https://api.giphy.com/v1/gifs/random?limit=2&api_key=${giphyKey}&tag=${search}`,
+  url: `https://api.giphy.com/v1/gifs/random?limit=2&api_key=${giphyKey}&tag=${searchString}`,
   headers: {
     "x-rapidapi-key": "07058048ffmshe16787ad7b4eeffp1c88f9jsn4040b743a04a",
     "x-rapidapi-host": "google-search3.p.rapidapi.com"
