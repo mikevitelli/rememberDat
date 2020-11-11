@@ -1,6 +1,6 @@
 // GIPHY API
 
-const giphyKey = "QZW2fQn2JVqIqSnBTL5uNajwBc3KR8qE";
+const giphyKey = process.env.GIPHY_KEY;
 const search = userData.replace(" ", "+");
 
 const queryURL = `https://api.giphy.com/v1/gifs/random?limit=2&api_key=${giphyKey}&tag=${search}`;
