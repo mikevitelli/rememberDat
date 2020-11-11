@@ -9,7 +9,7 @@
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
     "watch": "nodemon server.js",
-    "bing": "nodemon ./apis/bing.js"
+    "bing": "nodemon ./services/bing.js"
   },
   "keywords": [],
   "author": "",
