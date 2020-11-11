@@ -11,7 +11,7 @@ module.exports = function(app) {
       res.redirect("/content-landing.html");
     }
     // if not take them to the signup page
-    res.sendFile(path.join(__dirname, "../public/startpage.html"));
+    res.sendFile(path.join(__dirname, "../pages/startpage.html"));
   });
 
   app.get("/login", (req, res) => {
@@ -19,20 +19,20 @@ module.exports = function(app) {
     if (req.user) {
       res.redirect("/content-landing.html");
     }
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.sendFile(path.join(__dirname, "../pages/login.html"));
   });
 
   app.get("/signup", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    res.sendFile(path.join(__dirname, "../pages/signup.html"));
   });
 
-  app.get("/content-landing", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/content-landing.html"));
+  app.get("/content-landing", isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, "../pages/content-landing.html"));
   });
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/categories", isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/categories.html"));
+    res.sendFile(path.join(__dirname, "../pages/categories.html"));
   });
 };
