@@ -14,8 +14,8 @@ const bingImageSearch = search => {
     url: "https://bing-image-search1.p.rapidapi.com/images/search",
     params: { q: `${encodeURIComponent(search)}` },
     headers: {
-      "x-rapidapi-key": process.env.API_KEY,
-      "x-rapidapi-host": "bing-image-search1.p.rapidapi.com"
+      "x-rapidapi-key": process.env.BING_KEY,
+      "x-rapidapi-host": process.env.BING_HOST
     }
   };
 
