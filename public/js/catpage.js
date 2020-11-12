@@ -2,6 +2,18 @@
 // Obtaining the category name when a button is clicked
 
 
+$("#catNextBtn").on("click", function(event) {
+    event.preventDefault();
+
+    console.log('Next btn click working')
+  
+     // Creating routs for posting cat name into the MYSQL database
+ 
+
+   
+  
+  }); // closing br click function
+
   
 
 

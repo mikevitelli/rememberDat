@@ -51,4 +51,35 @@ module.exports = function(app) {
       });
     }
   });
-};
+
+  
+app.post("/api/category/", function(req, res) {
+  db.Category.create(
+    {
+    catName:userCatChoice.catName, 
+    }
+
+  ).then(function(dbCategory) {
+    res.json(dbCategory);
+  });
+}); //closing br for post request
+
+
+app.post("/api/users/addcategory", function(req, res) {
+  console.log("user:", req.user)
+
+  // db.User.findOne({
+  //   where: {
+  //     id: req.user.id
+  //   },
+  //   include: [db.Category.catName]
+  // }).then(function(dbCategory) {
+  //   res.json(dbCategory);
+  // });
+}); // closing br post request
+
+
+
+
+}; // closing br for the app function
+

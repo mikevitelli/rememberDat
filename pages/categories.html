@@ -128,7 +128,7 @@
 
       <div class="row-category-nine">
         <div class="col">
-          <button type="button" class="btn btn-primary btn-small">
+          <button id='catNextBtn'type="button" class="btn btn-primary btn-small">
             <h1>Next</h1>
           </button>
         </div>
@@ -155,12 +155,48 @@
     
     });
 
-    $.post("/api/category", Category)
-    // On success, run the following code
-    .then(function(data) {
-      // Log the data we found
-      console.log(data);
+
+
+
+    $("#catNextBtn").on("click", function(event) {
+      event.preventDefault();
+  
+      console.log('Next btn click working')
+    
+       // Creating routs for posting cat name into the MYSQL database
+    app.post("/api/category", function(req, res) {
+    db.Category.create(
+      {
+      catName:userCatChoice.catName, 
+      }
+
+    ).then(function(dbCategory) {
+      res.json(dbCategory);
     });
+  }); //closing br for post request
+
+
+  app.get("/api/authors/Category", function(req, res) {
+  
+    db.User.findAll({
+      where: {
+        id: email
+      },
+      include: [db.Category.catName]
+    }).then(function(dbCategory) {
+      res.json(dbCategory);
+    });
+  }); // closing br get request
+
+     
+    
+    }); // closing br click function
+
+
+
+
+
+
     
     </script>
   </body>
