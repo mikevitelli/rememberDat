@@ -9,7 +9,7 @@ $(document).ready(() => {
   nextBtn.on("click", event => {
     event.preventDefault();
     getChoices();
-    // window.location.replace("/content-landing");
+    window.location.replace("/content-landing");
   });
 
   backBtn.on("click", event => {
