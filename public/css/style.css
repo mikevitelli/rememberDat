@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-form.signup,
-form.login {
-  margin-top: 50px;
-=======
 #loginContainer {
   text-align: center;
 }
@@ -279,5 +274,4 @@ body {
 
 #crt {
   animation: textShadow 1.6s infinite;
->>>>>>> main
 }
