@@ -47,11 +47,54 @@ $(document).ready(() => {
 //   });
 // });
 
-$(".btn").each(function () {
-  $(this).on("click", function () {
-    $(this).addClass("btn-success");
-    $(this).removeClass("btn-danger");
-  });
-});
+// $(".btn").each(function () {
+//   $(this).on("click", function () {
+//     $(this).addClass("btn-success");
+//     $(this).removeClass("btn-danger");
+//     var userCatChoice = {
+//       catName: $(this).parent().attr("id"),
+//     };
+//     console.log("user cat choice", userCatChoice);
+//   });
+// });
 
-// when button is clicked, changes value of button to true
+function clickClick() {
+  $(".btn").each(function () {
+    $(this).addClass("btn-danger");
+    $(this).removeClass("btn-success");
+    $(this).unbind("click");
+    $(this).on("click", function () {
+      var userCatChoice = {
+        catName: $(this).parent().attr("id"),
+      };
+      console.log("user cat choice", userCatChoice);
+      $(this).addClass("btn-success");
+      $(this).removeClass("btn-danger");
+      $(this).unbind("click");
+      $(this).on("click", clickClick);
+    });
+  });
+}
+clickClick();
+
+// when button is clicked, changes value of button
+
+// // When user clicks add-btn
+// $(".btn").on("click", function (event) {
+//   event.preventDefault();
+
+//   console.log("click working");
+
+//   // Make a newBook object
+//   var userCatChoice = {
+//     catName: $(this).parent().attr("id"),
+//   };
+//   console.log("user cat choice", userCatChoice);
+// });
+
+// $.post("/api/category", Category)
+//   // On success, run the following code
+//   .then(function (data) {
+//     // Log the data we found
+//     console.log(data);
+//   });
