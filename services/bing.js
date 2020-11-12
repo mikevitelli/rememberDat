@@ -11,7 +11,7 @@ const bingImageSearch = async search => {
   const shuffledImageObject = await axios({
     method: "GET",
     url: "https://bing-image-search1.p.rapidapi.com/images/search",
-    params: { q: `${encodeURIComponent(search)}` },
+    params: { q: encodeURIComponent(search) },
     headers: {
       "x-rapidapi-key": process.env.API_KEY,
       "x-rapidapi-host": "bing-image-search1.p.rapidapi.com"
