@@ -8,7 +8,7 @@ const shuffle = require("../utils/shuffle.js");
 // Run any string into this function (search) to return image objects;
 // =============:
 const bingImageSearch = async search => {
-  const shuffledImageObject = await axios({
+  return await axios({
     method: "GET",
     url: "https://bing-image-search1.p.rapidapi.com/images/search",
     params: { q: encodeURIComponent(search) },
@@ -29,14 +29,11 @@ const bingImageSearch = async search => {
         src: imageSRC[index],
         href: imageHREF[index]
       }));
-      return imageObj;
+      return shuffle(imageObj);
     })
     .catch(error => {
       console.error(error);
     });
-  console.log(shuffledImageObject);
-  return shuffle(shuffledImageObject);
 };
 // // - Exports;
-console.log(bingImageSearch("90s"));
 module.exports = bingImageSearch;

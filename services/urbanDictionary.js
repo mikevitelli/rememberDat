@@ -4,7 +4,7 @@ require("dotenv").config();
 const axios = require("axios").default;
 
 // Urban Dictionary function; urbanDictionary("word to define");
-function urbanDictionary(define) {
+async function urbanDictionary(define) {
   const options = {
     method: "GET",
     url: "https://mashape-community-urban-dictionary.p.rapidapi.com/define",
@@ -14,11 +14,10 @@ function urbanDictionary(define) {
       "x-rapidapi-host": "mashape-community-urban-dictionary.p.rapidapi.com"
     }
   };
-  return axios
+  return await axios
     .request(options)
     .then(response => response.data)
     .catch(err => console.error(err));
 }
-
-console.log(urbanDictionary("90s"));
+// - EXPORTS;
 module.exports = urbanDictionary;
