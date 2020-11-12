@@ -47,12 +47,33 @@ $(document).ready(() => {
 //     }
 //   });
 // });
-
-$(".btn").each(function() {
-  $(this).on("click", function() {
-    $(this).addClass("btn-success");
-    $(this).removeClass("btn-danger");
+function clickSuccess(btn) {
+  console.log("click");
+  btn.addClass("btn-success");
+  btn.removeClass("btn-danger");
+  btn.unbind("click");
+  btn.on("click", function() {
+    clickDanger($(this));
   });
-});
+}
+
+function clickDanger(btn) {
+  btn.addClass("btn-danger");
+  btn.removeClass("btn-success");
+  btn.unbind("click");
+  btn.on("click", function() {
+    clickSuccess($(this));
+  });
+}
+
+function clickClick() {
+  $(".btn").each(function() {
+    const btn = $(this);
+    btn.on("click", function() {
+      clickSuccess($(this));
+    });
+  });
+}
+clickClick();
 
 // when button is clicked, changes value of button to true
