@@ -24,7 +24,7 @@ module.exports = function (app) {
     res.sendFile(path.join(__dirname, "../pages/content-landing.html"));
   });
 
-  app.get("/categories", isAuthenticated, (req, res) => {
+  app.get("/categories", (req, res) => {
     res.sendFile(path.join(__dirname, "../pages/categories.html"));
   });
 };
