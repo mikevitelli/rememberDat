@@ -1,12 +1,11 @@
 $(document).ready(() => {
-  console.log("test");
   const rememberDat = $(".remember-dat");
   rememberDat.on("click", event => {
     event.preventDefault();
 
-    console.log("click");
     $.get("/api/services/bing", images => {
-      console.log(images);
+      console.log("click");
+      // console.log(images.data);
       function createImage(image) {
         const img = document.createElement("img");
         img.alt = image.alt;
@@ -17,9 +16,9 @@ $(document).ready(() => {
         console.log(img);
         return img;
       }
-      images.forEach(image => {
-        body.appendChild(createImage(image));
-      });
+      // images.forEach(image => {
+      //   body.appendChild(createImage(image));
+      // });
     });
   });
 });
