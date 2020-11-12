@@ -1,4 +1,14 @@
-.container {
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.form-group {
+  text-align: center;
+  font-family: "RANDOMFONT", Cursive;
+}
+
+.container,
+form {
   text-align: center;
   display: flexbox;
   margin: 0;

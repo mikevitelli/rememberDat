@@ -1,4 +1,3 @@
-/* Makes the calendar icon go from black to white */
 ::-webkit-calendar-picker-indicator {
     filter: invert(1);
 }
@@ -16,7 +15,6 @@
 
 body {
     background-size: cover;
-    color: white;
     height: 100vh;
     padding: 0;
     margin: 0;
