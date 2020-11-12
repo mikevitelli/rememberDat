@@ -1,7 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
-// const giphy = require("../services/giphy.js");
+const bingImageSearch = require("../services/bing");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -13,6 +13,11 @@ module.exports = function(app) {
       email: req.user.email,
       id: req.user.id
     });
+  });
+
+  app.get("/api/services/bing", (req, res) => {
+    console.log(bingImageSearch("90s").then(res => res));
+    res.json(bingImageSearch("90s"));
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
