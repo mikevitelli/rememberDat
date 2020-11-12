@@ -10,7 +10,10 @@
       rel="stylesheet"
       href="http://code.divshot.com/geo-bootstrap/swatch/bootstrap.css"
     />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
+
+
   <body>
     <div class="container">
       <div class="row-page-title">
@@ -22,8 +25,8 @@
       <div class="row-category-one">
         <div class="col"></div>
         <div class="col-6">
-          <div id="television">
-            <button type="button" class="btn btn-danger btn-small">
+          <div id="television" >
+            <button  type="button" class="btn btn-danger btn-small">
               <h3>TV</h3>
             </button>
           </div>
@@ -136,8 +139,34 @@
 
     <!-- link button out -->
     <!-- JS code linked -->
+
+    <script>
+      // When user clicks add-btn
+  $(".btn").on("click", function(event) {
+      event.preventDefault();
+  
+      console.log('click working')
+    
+      // Make a newBook object
+      var userCatChoice = {
+        catName: $(this).parent().attr('id')
+      };
+    console.log ( 'user cat choice',userCatChoice)
+    
+    });
+
+    $.post("/api/category", Category)
+    // On success, run the following code
+    .then(function(data) {
+      // Log the data we found
+      console.log(data);
+    });
+    
+    </script>
   </body>
 </html>
+
+
 
 <!--TV
 TOYS

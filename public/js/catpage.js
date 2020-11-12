@@ -1,4 +1,12 @@
 
+// Obtaining the category name when a button is clicked
+
+
+  
+
+
+
+
 // Arrays
 // Category array
             tv=[]
@@ -16,7 +24,7 @@
             lisaFrank
 
 
-            let show = myShows[Math.floor(Math.random() * myShows.length)];
+           
 // API Array
 apiArray=['giphy', 'bing', 'pictures', 'youtube']
 
@@ -26,33 +34,47 @@ apiArray=['giphy', 'bing', 'pictures', 'youtube']
 
 // On click Randomly selects an item from each of the  respective arrays of selected categories
 
-      const chosenTv = tv[Math.floor(Math.random() * tv.length)];
+      const randomTv = tv[Math.floor(Math.random() * tv.length)];
 
-      const chosenToys= toys[Math.floor(Math.random() * toys.length)];
+      const randomToys= toys[Math.floor(Math.random() * toys.length)];
 
-      const chosenVideoGames= videoGames[Math.floor(Math.random() * videoGames.length)];
+      const randomVideoGames= videoGames[Math.floor(Math.random() * videoGames.length)];
 
-      const chosenelectronics= electronis[Math.floor(Math.random() * electronics.length)];
+      const randomlectronics= electronis[Math.floor(Math.random() * electronics.length)];
 
-      const chosenBooks= books[Math.floor(Math.random() * books.length)];
+      const randomBooks= books[Math.floor(Math.random() * books.length)];
 
-      const choseSnacks= snacks[Math.floor(Math.random() * snacks.length)];
+      const randomSnacks= snacks[Math.floor(Math.random() * snacks.length)];
 
-      const chosenMusic= music[Math.floor(Math.random() * music.length)];
+      const randomMusic= music[Math.floor(Math.random() * music.length)];
 
       const lisaFrank
 
-// On click Randomy selects an API from an API array
 
-chosenApi= apiArray[Math.floor(Math.random() * apiArray.length)];
 
-// use foreach for all of the items in the catName column of the userCat table
 
-// Function : Takes in the category as the parameter
-   // 1) loops through category items from the userCat table 
 
-   // 2) Loops through the 
+     randomTv = tv[Math.floor(Math.random() * tv.length)];
 
-// An array of selected options is created 
+// use foreach for all of the items in the catName column to run the following function
+ function searchApi(randomCat) {
+
+
+        // Randomly selects the api 
+
+        chosenApi= apiArray[Math.floor(Math.random() * apiArray.length)];
+    
+        // Get request from MYSQL database to obtain values from the catName column of the userCat table
+    
+       // function that randomly obtains value from the respective category array from the MYSQL list of categories by the user
+
+
+    // transfers that randomly selected value  based on user choice to the 
+    // On click Randomy selects an API from an API array
+
+
+
+ }
+
 
 // 
