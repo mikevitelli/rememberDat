@@ -76,4 +76,23 @@ function clickClick() {
 }
 clickClick();
 
-// when button is clicked, changes value of button to true
+
+// // When user clicks add-btn
+// $(".btn").on("click", function (event) {
+//   event.preventDefault();
+
+//   console.log("click working");
+
+//   // Make a newBook object
+//   var userCatChoice = {
+//     catName: $(this).parent().attr("id"),
+//   };
+//   console.log("user cat choice", userCatChoice);
+// });
+
+// $.post("/api/category", Category)
+//   // On success, run the following code
+//   .then(function (data) {
+//     // Log the data we found
+//     console.log(data);
+//   });
