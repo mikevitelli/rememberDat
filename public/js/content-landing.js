@@ -1,6 +1,6 @@
 console.log("loaded");
-const bingImageSearch = require("../../services/bing");
-const images = bingImageSearch("90s");
+// const bingImageSearch = require("../../services/bing");
+// const images = bingImageSearch("90s");
 const body = document.getElementById("body");
 
 function createImageNode(image) {
@@ -14,6 +14,24 @@ function createImageNode(image) {
   return img;
 }
 
-images.forEach(image => {
-  body.appendChild(createImageNode(image));
+// images.forEach((image) => {
+//   body.appendChild(createImageNode(image));
+// });
+
+$(document).ready(() => {
+  // getting references to form input
+  const categoriesBtn = $("button#catBtn");
+  const rememberDatBtn = $("button#rememberDatBtn");
+
+  //   when next button is pressed, content landing page is displayed
+
+  categoriesBtn.on("click", (event) => {
+    event.preventDefault();
+    window.location.replace("/categories");
+  });
+
+  rememberDatBtn.on("click", (event) => {
+    event.preventDefault();
+    console.log("pressed");
+  });
 });
