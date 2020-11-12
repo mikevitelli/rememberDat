@@ -1,6 +1,6 @@
 require("dotenv").config();
 const axios = require("axios").default;
-const urbanDictionary = async define => {
+async function urbanDictionary(define) {
   const options = {
     method: "GET",
     url: "https://mashape-community-urban-dictionary.p.rapidapi.com/define",
@@ -10,13 +10,12 @@ const urbanDictionary = async define => {
       "x-rapidapi-host": "mashape-community-urban-dictionary.p.rapidapi.com"
     }
   };
-
-  await axios
+  return await axios
     .request(options)
     .then(response => response.data)
-    .catch(error => {
-      console.error(error);
-    });
-};
+    .catch(err => console.error(err));
+}
+
+const urbanDictionary = urbanDictionary("");
 
 console.log(urbanDictionary("90s"));
