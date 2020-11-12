@@ -1,16 +1,17 @@
 $(document).ready(() => {
+  console.log("categories.js loaded");
   // getting references to form input
   const nextBtn = $("button#catNextBtn");
   const backBtn = $("button#catBackBtn");
 
   //   when next button is pressed, content landing page is displayed
 
-  nextBtn.on("click", (event) => {
+  nextBtn.on("click", event => {
     event.preventDefault();
     window.location.replace("/content-landing");
   });
 
-  backBtn.on("click", (event) => {
+  backBtn.on("click", event => {
     event.preventDefault();
     window.location.replace("/");
   });
@@ -46,38 +47,35 @@ $(document).ready(() => {
 //     }
 //   });
 // });
+function clickSuccess(btn) {
+  console.log("click");
+  btn.addClass("btn-success");
+  btn.removeClass("btn-danger");
+  btn.unbind("click");
+  btn.on("click", function() {
+    clickDanger($(this));
+  });
+}
 
-// $(".btn").each(function () {
-//   $(this).on("click", function () {
-//     $(this).addClass("btn-success");
-//     $(this).removeClass("btn-danger");
-//     var userCatChoice = {
-//       catName: $(this).parent().attr("id"),
-//     };
-//     console.log("user cat choice", userCatChoice);
-//   });
-// });
+function clickDanger(btn) {
+  btn.addClass("btn-danger");
+  btn.removeClass("btn-success");
+  btn.unbind("click");
+  btn.on("click", function() {
+    clickSuccess($(this));
+  });
+}
 
 function clickClick() {
-  $(".btn").each(function () {
-    $(this).addClass("btn-danger");
-    $(this).removeClass("btn-success");
-    $(this).unbind("click");
-    $(this).on("click", function () {
-      var userCatChoice = {
-        catName: $(this).parent().attr("id"),
-      };
-      console.log("user cat choice", userCatChoice);
-      $(this).addClass("btn-success");
-      $(this).removeClass("btn-danger");
-      $(this).unbind("click");
-      $(this).on("click", clickClick);
+  $(".btn").each(function() {
+    const btn = $(this);
+    btn.on("click", function() {
+      clickSuccess($(this));
     });
   });
 }
 clickClick();
 
-// when button is clicked, changes value of button
 
 // // When user clicks add-btn
 // $(".btn").on("click", function (event) {

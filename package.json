@@ -9,6 +9,7 @@
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
     "watch": "nodemon server.js",
+    "urban": "nodemon ./services/urbanDictionary.js",
     "bing": "nodemon ./services/bing.js"
   },
   "keywords": [],
