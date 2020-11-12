@@ -6,13 +6,13 @@ $(document).ready(() => {
 
   //   when next button is pressed, content landing page is displayed
 
-  nextBtn.on("click", event => {
+  nextBtn.on("click", (event) => {
     event.preventDefault();
     getChoices();
-    // window.location.replace("/content-landing");
+    window.location.replace("/content-landing");
   });
 
-  backBtn.on("click", event => {
+  backBtn.on("click", (event) => {
     event.preventDefault();
     window.location.replace("/");
   });
@@ -27,20 +27,16 @@ function clickSuccess(btn) {
   btn.addClass("btn-success");
   btn.removeClass("btn-danger");
   btn.unbind("click");
-  btn.on("click", function() {
+  btn.on("click", function () {
     clickDanger($(this));
   });
 }
 
 function getChoices() {
   const choices = [];
-  $(".active").each(function() {
+  $(".active").each(function () {
     console.log($("h3", this).text());
-    choices.push(
-      $(this)
-        .text()
-        .trim()
-    );
+    choices.push($(this).text().trim());
   });
   console.log(choices);
 }
@@ -50,15 +46,15 @@ function clickDanger(btn) {
   btn.addClass("btn-danger");
   btn.removeClass("btn-success");
   btn.unbind("click");
-  btn.on("click", function() {
+  btn.on("click", function () {
     clickSuccess($(this));
   });
 }
 
 function clickClick() {
-  $(".catBtn").each(function() {
+  $(".catBtn").each(function () {
     const btn = $(this);
-    btn.on("click", function() {
+    btn.on("click", function () {
       clickSuccess($(this));
     });
   });
