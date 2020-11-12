@@ -4,24 +4,92 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Landing Page</title>
-    <link rel="stylesheet" href="../public/stylesheets/content-landing.css" />
     <!-- bootstrap and css connection-->
     <link
-      rel="stylesheet"
-      href="http://code.divshot.com/geo-bootstrap/swatch/bootstrap.css"
+    rel="stylesheet"
+    href="http://code.divshot.com/geo-bootstrap/swatch/bootstrap.css"
     />
+    <link type="text/css" href=".css/style.css" />
+    <style type="text/css">
+      .gb {
+        position: relative;
+      }
+
+      .gb img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        width: 550px;
+      }
+
+      .game {
+        position: absolute;
+        top: 105px;
+        left: 175px;
+        z-index: 10;
+        border: 4px solid #000;
+        border-radius: 20px 20px 30px 0px;
+      }
+
+      .b {
+        width: 400px;
+        height: 300px;
+      }
+      
+
+    .dialup  {
+      clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
+		animation: dialup 15s linear forwards;
+	}
+
+
+@keyframes dialup {
+	0% { clip-path: polygon(0 0, 100% 0%, 100% 0, 0 0); }
+	100% {clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%); }
+}
+.clearfix {
+  overflow: auto;
+}
+    </style>
   </head>
   <body class="selected-category-profile">
     <div id="content-landing">
       <!-- container -->
-      <div id="container">
+      <div class="container">
+        <div class="gb">
+          <img class="dialup" src="https://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c362.png" alt="" />
+          
+          <div class="game dialup">
+        <iframe
+                  src="https://www.retrogames.cc/embed/25130-tamagotchi-usa-europe.html"
+                  width="200"
+                  height="148"
+                  frameborder="no"
+                  allowfullscreen="true"
+                  webkitallowfullscreen="true"
+                  mozallowfullscreen="true"
+                  scrolling="no"
+                ></iframe>
+        
+          </div>
+        </div> 
+      </div>
         <!--div for image that routes through api to display different ones each time  -->
-        <div id="content-landing-image">
+        <div class="dialup bg-info clearfix" id="content-landing-image">
+          <a
+            data-pin-do="embedBoard"
+            data-pin-board-width="400"
+            data-pin-scale-height="240"
+            data-pin-scale-width="80"
+            href="https://www.pinterest.com/katiepick2/90s-nostalgia/"
+          ></a>
           <!-- img src -->
           <img
             src="https://nothingaboutscotthere.files.wordpress.com/2014/12/weird-stuff-28.jpg"
             alt="barbie-head"
             style="width: 35%"
+            class="dialup"
           />
         </div>
         <!-- close image div -->
@@ -34,12 +102,14 @@
       <!-- close container div-->
       <br />
       <!-- button to circulate throughout the categories and change images-->
-      <button class="content-landing-remember-dat" id="button">
+      <button class="remember-dat" id="button">
         Remember Dat!
       </button>
     </div>
 
     <!--JS script linking-->
-    <script type="module" src="./js/content-landing.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../js/content-landing.js"></script>
+    <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
   </body>
 </html>
