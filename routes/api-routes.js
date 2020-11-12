@@ -1,7 +1,11 @@
 // Requiring our models and passport as we've configured it
+const isAuthenticated=require('../config/middleware/isAuthenticated')
 const db = require("../models");
 const passport = require("../config/passport");
 const bingImageSearch = require("../services/bing");
+const user = require('../models/user');
+
+
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -56,4 +60,60 @@ module.exports = function(app) {
       });
     }
   });
+
+app.post("/api/users/addcategory", isAuthenticated, (req, res)=>{
+console.log ("adding category")
+console.log('user', req.user)
+
+
+
+// Find a user and obtain id
+
+
+ db.User.findOne({
+
+  where: {
+    id:req.user.id
+  },
+  include: [db.Category]
+
+ }).then(function(user) {
+   db.Category.findOne({
+     where: {
+       catName: "music"
+     }
+   }).then(category => {
+
+    user.addCategory(category )
+
+    res.json(user)
+   })
+
+ 
+
+  
+
+  })
+});
+
+
+ // POST route for saving a new todo
+ app.post("/api/todos", function(req, res) {
+  console.log(req.body);
+  // create takes an argument of an object describing the item we want to
+  // insert into our table. In this case we just we pass in an object with a text
+  // and complete property (req.body)
+  db.Todo.create({
+    text: req.body.text,
+    complete: req.body.complete
+  }).then(function(dbTodo) {
+    // We have access to the new todo as an argument inside of the callback function
+    res.json(dbTodo);
+  });
+});
+
+
+
+
 };
+
