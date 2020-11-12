@@ -1,9 +1,9 @@
-'use strict';
-
+"use strict";
 
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+<<<<<<< HEAD
 
   // Note that I am using categories here instead of category because the MYSQL database automatically changes the table name to categories
   
@@ -87,3 +87,33 @@ module.exports = {
 
 
     
+=======
+    await queryInterface.bulkInsert(
+      "categories",
+      [
+        {
+          catName: "arts",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+
+        {
+          catName: "history",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {}
+    );
+  },
+
+  down: async (queryInterface, Sequelize) => {
+    /**
+     * Add commands to revert seed here.
+     *
+     * Example:
+     * await queryInterface.bulkDelete('People', null, {});
+     */
+  },
+};
+>>>>>>> e6a4273338a05178e16926faf10fa15f3bbbfe1f

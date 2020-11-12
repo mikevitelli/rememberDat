@@ -1,26 +1,71 @@
-/* Makes the calendar icon go from black to white */
-::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-}
-
-.form-group {
+#loginContainer {
   text-align: center;
-  font-family: "RANDOMFONT", Cursive;
 }
 
-/* Dangerous game, I'm playing right now but this makes both the start page 
-and the homepage create account forms centered in the middle of the page*/
-.container,
-form {
+.container {
   text-align: center;
   display: flexbox;
-
   margin: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
+}
+
+body {
+  background-size: cover;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.btn {
+  border: 6px ridge #bbb;
+  color: whitesmoke;
+}
+
+.gb {
+  position: relative;
+}
+
+.gb img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 550px;
+}
+
+.game {
+  position: absolute;
+  top: 105px;
+  left: 175px;
+  z-index: 10;
+  border: 4px solid #000;
+  border-radius: 20px 20px 30px 0px;
+}
+
+.b {
+  width: 400px;
+  height: 300px;
+}
+
+.dialup {
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
+  animation: dialup 15s linear forwards;
+}
+
+@keyframes dialup {
+  0% {
+    clip-path: polygon(0 0, 100% 0%, 100% 0, 0 0);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
+  }
+}
+.clearfix {
+  overflow: auto;
 }
 
 .clickHere {
