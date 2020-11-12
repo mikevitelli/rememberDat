@@ -285,7 +285,7 @@ body {
 }
 
 .gameWrapper {
-  position: absolute;
+  position: fixed !important;
   box-shadow: 5px 5px blue, 10px 10px red, 15px 15px green;
-  bottom: 10px;
+  bottom: 0px !important;
 }

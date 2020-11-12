@@ -17,49 +17,11 @@ $(document).ready(() => {
   });
 });
 
-// $.get("/api/services/bing", images => {
-//   console.log("click");
-//   // console.log(images.data);
-//   function createImage(image) {
-//     const img = document.createElement("img");
-//     img.alt = image.alt;
-//     img.src = image.src;
-//     img.href = image.href;
-//     img.width = "50";
-//     img.height = "50";
-//     console.log(img);
-//     return img;
-//   }
-//   // images.forEach(image => {
-//   //   body.appendChild(createImage(image));
-//   // });
-// });
-
-// console.log("loaded");
-// // const bingImageSearch = require("../../services/bing");
-// // const images = bingImageSearch("90s");
-// const body = document.getElementById("body");
-
-// function createImageNode(image) {
-//   const img = document.createElement("img");
-//   img.alt = image.alt;
-//   img.src = image.src;
-//   img.href = image.href;
-//   img.width = "50";
-//   img.height = "50";
-//   console.log(img);
-//   return img;
-// }
-
-// images.forEach((image) => {
-//   body.appendChild(createImageNode(image));
-// });
-
 // Make the GAMEBOY element draggable:
 dragElement(document.getElementById("gameboy"));
 
 function dragElement(elem) {
-  const pos1 = 0,
+  let pos1 = 0,
     pos2 = 0,
     pos3 = 0,
     pos4 = 0;
