@@ -8,7 +8,8 @@ $(document).ready(() => {
 
   nextBtn.on("click", event => {
     event.preventDefault();
-    window.location.replace("/content-landing");
+    getChoices();
+    // window.location.replace("/content-landing");
   });
 
   backBtn.on("click", event => {
@@ -20,35 +21,9 @@ $(document).ready(() => {
 // // To target the elements having class change
 // const button = $(".lisaFrank");
 // // To add click event to elements having class change
-// $(".lisaFrank").click(function () {
-//   button.addClass("btn-success");
-//   button.removeClass("btn-danger");
-// });
-
-// const button = $(".btn");
-
-// $.each(button, function () {
-//   button.addClass("btn-success");
-//   button.removeClass("btn-danger");
-// });
-
-// adding data to server and changing the color when pressed
-// $(".btn").each(function (index) {
-//   i = 0;
-//   $(this).on("click", function (i) {
-//     if ((i = 0)) {
-//       $(this).addClass("btn-success");
-//       $(this).removeClass("btn-danger");
-//       i = 1;
-//     } else {
-//       i = 0;
-//       $(this).addClass("btn-danger");
-//       $(this).removeClass("btn-success");
-//     }
-//   });
-// });
 function clickSuccess(btn) {
   console.log("click");
+  btn.addClass("active");
   btn.addClass("btn-success");
   btn.removeClass("btn-danger");
   btn.unbind("click");
@@ -57,7 +32,21 @@ function clickSuccess(btn) {
   });
 }
 
+function getChoices() {
+  const choices = [];
+  $(".active").each(function() {
+    console.log($("h3", this).text());
+    choices.push(
+      $(this)
+        .text()
+        .trim()
+    );
+  });
+  console.log(choices);
+}
+
 function clickDanger(btn) {
+  btn.removeClass("active");
   btn.addClass("btn-danger");
   btn.removeClass("btn-success");
   btn.unbind("click");
@@ -67,7 +56,7 @@ function clickDanger(btn) {
 }
 
 function clickClick() {
-  $(".btn").each(function() {
+  $(".catBtn").each(function() {
     const btn = $(this);
     btn.on("click", function() {
       clickSuccess($(this));
@@ -75,5 +64,3 @@ function clickClick() {
   });
 }
 clickClick();
-
-// when button is clicked, changes value of button to true
