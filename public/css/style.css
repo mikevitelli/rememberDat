@@ -312,8 +312,8 @@ body {
   position: relative;
   z-index: 1000 !important;
   margin: auto;
-}
-
+  
 #theImages {
   position: fixed;
+
 }
