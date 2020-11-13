@@ -47,7 +47,7 @@ function addImage(bingImages) {
 }
 
 // Make the GAMEBOY element draggable:
-dragElement(document.getElementById("gameboy"));
+dragElement(document.getElementById("pocket"));
 
 function dragElement(elem) {
   let pos1 = 0,

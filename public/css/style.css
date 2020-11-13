@@ -250,29 +250,23 @@ body {
 
 /* GAMEBOY */
 
-.pocket {
+#pocket {
+  z-index: 10;
+}
+.gameboy img {
+  pointer-events: none;
   z-index: 10;
   position: fixed;
-}
-.gb {
-  position: relative;
-}
-
-.gb img {
-  position: fixed;
-  top: 100px;
-  right: -120px;
-  z-index: 10;
-  width: 550px;
+  bottom: -50px;
+  right: -160px;
+  width: 500px;
 }
 
 .game {
   position: fixed;
-  top: 205px;
-  right: 45px;
-  z-index: 10;
-  border: 4px solid #000;
-  border-radius: 20px 20px 30px 0px;
+  bottom: 40px;
+  right: 40px;
+  z-index: 8;
 }
 
 .b {
@@ -302,7 +296,7 @@ body {
 }
 
 .gameWrapper {
+  z-index: 10;
   position: fixed !important;
-  box-shadow: 5px 5px blue, 10px 10px red, 15px 15px green;
   bottom: 0px !important;
 }
