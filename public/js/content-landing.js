@@ -18,6 +18,7 @@ $(document).ready(() => {
       res.forEach(image => {
         bingImages.push(image);
       });
+      addImage(bingImages);
       rememberDatBtn.on("click", () => {
         addImage(bingImages);
       });
@@ -28,21 +29,17 @@ $(document).ready(() => {
 const bingImages = [];
 i = 0;
 
-function createImage(i, image) {
-  const img = document.createElement("img");
-  img.id = `picture${i}`;
-  img.alt = image.alt;
-  img.src = image.src;
-  img.classList.add("dialup");
-  img.href = image.href;
-  img.width = "400";
-  img.height = "400";
-  console.log(img);
-  return img;
+function changeImage(image) {
+  $("#image").attr("class", "");
+  $("#image").attr("alt", image.alt);
+  $("#image").attr("src", image.src);
+  $("#image").attr("class", "dialup");
 }
+
 function addImage(bingImages) {
   if (i < bingImages.length) {
-    $(".mainWrapper").append(createImage(i, bingImages[i]));
+    changeImage(bingImages[i]);
+
     console.log("click");
     i++;
     return false;
@@ -100,15 +97,37 @@ function dragElement(elem) {
 target = $(".browser-frame");
 Draggable.create(target, { trigger: "#drag-handle" });
 
-var handleResize = $("<div class='resize-handle'></div>").appendTo(target);
+const handleResize = $("<div class='resize-handle'></div>").appendTo(target);
 
 Draggable.create(handleResize, {
   type: "top,left",
-  onPress: function (e) {
+  onPress: function(e) {
     e.stopPropagation();
   },
-  onDrag: function (e) {
+  onDrag: function(e) {
     parent = this.target.parentNode;
     TweenLite.set(parent, { width: this.x, height: this.y - 132 - 55 });
-  },
+  }
 });
+
+// *************
+// OLD CODE SNIPPETS
+// *************
+
+// function createImage(image) {
+//   const a = document.createElement("a");
+//   const img = document.createElement("img");
+//   img.id = `picture${i}`;
+//   img.alt = image.alt;
+//   img.src = image.src;
+//   img.classList.add("dialup");
+//   a.setAttribute("href", image.href);
+//   img.width = "400";
+//   img.height = "400";
+//   console.log(img);
+//   return img;
+// }
+
+// $(".mainWrapper").append(createImage(bingImages[i]));
+// const that = $(`#picture${i}`);
+// dragElement(that);

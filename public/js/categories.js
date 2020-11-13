@@ -11,7 +11,7 @@ $(document).ready(() => {
     event.preventDefault();
     const choices = getChoices();
     console.log(choices);
-    $.post("/api/users/addcategory", {
+    $.post("/api/users/addCategory", {
       categories: choices
     }).then(() => {
       window.location.replace("/content-landing");
