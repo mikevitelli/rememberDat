@@ -1,11 +1,13 @@
 // Requiring our models and passport as we've configured it
-const isAuthenticated=require('../config/middleware/isAuthenticated')
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 const db = require("../models");
 const passport = require("../config/passport");
 const bingImageSearch = require("../services/bing");
-const user = require('../models/user');
-
-
+const shuffle = require("../utils/shuffle.js");
+const { use } = require("chai");
+const path = require("path");
+// const user = require("../models/user");
+// const { JSONB } = require("sequelize/types");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -13,15 +15,21 @@ module.exports = function(app) {
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
-    res.json({
-      email: req.user.email,
-      id: req.user.id
-    });
+    res.json(req.user);
   });
 
-  app.get("/api/services/bing", (req, res) => {
-    console.log(bingImageSearch("90s").then(res => res));
-    res.json(bingImageSearch("90s"));
+  app.get("/api/services/bing", async (req, res) => {
+    if (!req.user) {
+      console.log("ACCESS DENIED");
+    } else {
+      const theUser = await db.User.findOne({ where: { id: req.user.id } });
+      const userCat = shuffle(theUser.dataValues.categories.split(","));
+      console.log(userCat);
+      const images = await bingImageSearch("90s " + userCat[0]).then(
+        image => image
+      );
+      res.json(images);
+    }
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -30,7 +38,8 @@ module.exports = function(app) {
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      categories: ""
     })
       .then(() => {
         res.redirect(307, "/api/login");
@@ -61,6 +70,7 @@ module.exports = function(app) {
     }
   });
 
+<<<<<<< HEAD
 app.post("/api/users/addcategory", isAuthenticated, (req, res)=>{
 console.log ("adding category")
 console.log('user', req.user)
@@ -114,6 +124,36 @@ console.log('user', req.user)
 
 
 
+=======
+  app.post("/api/users/addCategory", isAuthenticated, async (req, res) => {
+    // console.log("user", req);
+    // console.log("adding category");
+    const userCat = req.body.categories.toString();
+    const userID = req.user.id;
+    // Find a user and obtain id
+    console.log(userCat);
+    const theUser = await db.User.findOne({ where: { id: userID } });
 
+    await theUser.update({ categories: userCat }).then(() => {
+      theUser.save();
+      // console.log(theUser);
+      res.json({});
+    });
+  });
+>>>>>>> 3ebe864387b199dba5deded643908e1e3a92e5bd
+
+  // POST route for saving a new todo
+  app.post("/api/todos", (req, res) => {
+    console.log(req.body);
+    // create takes an argument of an object describing the item we want to
+    // insert into our table. In this case we just we pass in an object with a text
+    // and complete property (req.body)
+    db.Todo.create({
+      text: req.body.text,
+      complete: req.body.complete
+    }).then(dbTodo => {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(dbTodo);
+    });
+  });
 };
-

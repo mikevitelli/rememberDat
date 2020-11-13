@@ -27,4 +27,8 @@ module.exports = app => {
   app.get("/categories", (req, res) => {
     res.sendFile(path.join(__dirname, "../pages/categories.html"));
   });
+
+  app.get("/main", (req, res) => {
+    res.sendFile(path.join(__dirname, "../pages/mainContent.html"));
+  });
 };
