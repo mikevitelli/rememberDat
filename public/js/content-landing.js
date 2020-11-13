@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-console.log("loaded");
-const bingImageSearch = require("../../services/bing");
-const images = bingImageSearch("90s");
-const body = document.getElementById("body");
-=======
 $(document).ready(() => {
   // getting references to form input
   const categoriesBtn = $("button#catBtn");
@@ -24,6 +18,7 @@ $(document).ready(() => {
       res.forEach((image) => {
         bingImages.push(image);
       });
+      addImage(bingImages);
       rememberDatBtn.on("click", () => {
         addImage(bingImages);
       });
@@ -33,30 +28,29 @@ $(document).ready(() => {
 
 const bingImages = [];
 i = 0;
->>>>>>> main
 
-function createImage(image) {
-  const img = document.createElement("img");
-  // img.id = `picture${i}`;
-  img.alt = image.alt;
-  img.src = image.src;
-  img.classList.add("dialup", "draggable_handle");
-  img.href = image.href;
-  img.width = "400";
-  img.height = "400";
-  console.log(img);
-  return img;
-}
+// function changeImage(image) {
+//   $("#image").attr("class", "");
+//   $("#image").attr("alt", image.alt);
+//   $("#image").attr("src", image.src);
+//   $("#image").attr("class", "dialup");
+// }
+
 function addImage(bingImages) {
   if (i < bingImages.length) {
-    $(".mainWrapper").append(createImage(bingImages[i]));
-    // dragElement(document.getElementById(`picture${i}`));
+    $(".floaters").prepend(createImage(bingImages[i]));
+    const that = `#picture${i}`;
+    console.log(that);
+    $(that).draggable();
+    // changeImage(bingImages[i]);
+
     console.log("click");
     i++;
     return false;
   }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 images.forEach(image => {
   body.appendChild(createImageNode(image));
@@ -87,26 +81,33 @@ function dragElement(elem) {
     // call a function whenever the cursor moves:
     document.onmousemove = elementDrag;
   }
+=======
+$(() => {
+  $("img").draggable();
+});
+>>>>>>> a8a71ed1318bb26123f924f9155208c36bba5986
 
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elem.style.top = elem.offsetTop - pos2 + "px";
-    elem.style.left = elem.offsetLeft - pos1 + "px";
-  }
+$(() => {
+  $(".gameboy").draggable();
+});
+// *************
+// OLD CODE SNIPPETS
+// *************
 
-  function closeDragElement() {
-    // stop moving when mouse button is released:
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
+function createImage(image) {
+  const a = document.createElement("a");
+  const img = document.createElement("img");
+  img.id = `picture${i}`;
+  img.alt = image.alt;
+  img.src = image.src;
+  img.classList.add("dialup");
+  a.setAttribute("href", image.href);
+  img.width = "400";
+  img.height = "400";
+  console.log(img);
+  return img;
 }
+<<<<<<< HEAD
 // frame
 
 target = $(".browser-frame");
@@ -125,3 +126,5 @@ Draggable.create(handleResize, {
   },
 >>>>>>> main
 });
+=======
+>>>>>>> a8a71ed1318bb26123f924f9155208c36bba5986
