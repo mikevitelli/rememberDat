@@ -67,7 +67,7 @@ function createImage(image) {
   img.id = `picture${i}`;
   img.alt = image.alt;
   img.src = image.src;
-  img.classList.add("dialup");
+  img.classList.add("dialup", "theImages");
   a.setAttribute("href", image.href);
   img.width = "400";
   img.height = "400";

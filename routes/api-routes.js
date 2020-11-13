@@ -4,6 +4,8 @@ const db = require("../models");
 const passport = require("../config/passport");
 const bingImageSearch = require("../services/bing");
 const shuffle = require("../utils/shuffle.js");
+const path = require("path");
+
 // const { use } = require("chai");
 // const user = require("../models/user");
 // const { JSONB } = require("sequelize/types");
@@ -17,9 +19,9 @@ module.exports = function (app) {
     res.json(req.user);
   });
 
-  app.get("/api/services/bing", isAuthenticated, async (req, res) => {
+  app.get("/api/services/bing", async (req, res) => {
     if (!req.user) {
-      window.location.replace("/");
+      console.log("ACCESS DENIED");
     } else {
       const theUser = await db.User.findOne({ where: { id: req.user.id } });
       const userCat = shuffle(theUser.dataValues.categories.split(","));
