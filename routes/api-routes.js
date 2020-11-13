@@ -4,12 +4,13 @@ const db = require("../models");
 const passport = require("../config/passport");
 const bingImageSearch = require("../services/bing");
 const shuffle = require("../utils/shuffle.js");
-const { use } = require("chai");
 const path = require("path");
+
+// const { use } = require("chai");
 // const user = require("../models/user");
 // const { JSONB } = require("sequelize/types");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -26,7 +27,7 @@ module.exports = function(app) {
       const userCat = shuffle(theUser.dataValues.categories.split(","));
       console.log(userCat);
       const images = await bingImageSearch("90s " + userCat[0]).then(
-        image => image
+        (image) => image
       );
       res.json(images);
     }
@@ -39,12 +40,12 @@ module.exports = function(app) {
     db.User.create({
       email: req.body.email,
       password: req.body.password,
-      categories: ""
+      categories: "",
     })
       .then(() => {
         res.redirect(307, "/api/login");
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(401).json(err);
       });
   });
@@ -65,7 +66,7 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id
+        id: req.user.id,
       });
     }
   });
@@ -94,8 +95,8 @@ module.exports = function(app) {
     // and complete property (req.body)
     db.Todo.create({
       text: req.body.text,
-      complete: req.body.complete
-    }).then(dbTodo => {
+      complete: req.body.complete,
+    }).then((dbTodo) => {
       // We have access to the new todo as an argument inside of the callback function
       res.json(dbTodo);
     });
