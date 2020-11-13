@@ -3,7 +3,7 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 const db = require("../models");
 const passport = require("../config/passport");
 const bingImageSearch = require("../services/bing");
-const user = require("../models/user");
+// const user = require("../models/user");
 // const { JSONB } = require("sequelize/types");
 
 module.exports = function(app) {
@@ -15,11 +15,14 @@ module.exports = function(app) {
     res.json(req.user);
   });
 
-  app.get("/api/services/bing", async (req, res) => {
-    const images = await bingImageSearch("90s").then(image => image);
-    console.log(images);
-    res.json(images);
-    // res.json(bingImageSearch("90s"));
+  app.get("/api/services/bing", isAuthenticated, async (req, res) => {
+    if (!req.user) {
+      window.location.replace("/");
+    } else {
+      console.log(req.user);
+      const images = await bingImageSearch("90s").then(image => image);
+      res.json(images);
+    }
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -60,7 +63,7 @@ module.exports = function(app) {
     }
   });
 
-  app.post("/api/users/addcategory", isAuthenticated, async (req, res) => {
+  app.post("/api/users/addCategory", isAuthenticated, async (req, res) => {
     // console.log("user", req);
     // console.log("adding category");
     const userCat = req.body.categories.toString();
@@ -69,8 +72,9 @@ module.exports = function(app) {
     console.log(userCat);
     const theUser = await db.User.findOne({ where: { id: userID } });
 
-    await theUser.update({ categories: userCat }).then(user => {
-      user.save();
+    await theUser.update({ categories: userCat }).then(() => {
+      theUser.save();
+      console.log(theUser);
       res.json({});
     });
   });

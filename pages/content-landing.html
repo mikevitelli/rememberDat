@@ -6,11 +6,29 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
     <link
       rel="stylesheet"
-      href="http://code.divshot.com/geo-bootstrap/swatch/bootstrap.css"
+      href="https://code.divshot.com/geo-bootstrap/swatch/bootstrap.css"
     />
     <title>rememberDat?</title>
   </head>
   <body>
+    <div class="gameWrapper">
+      <div class="gameboy">
+        <img src="/assets/tama.png" alt="Tamagotchi" />
+      </div>
+      <div class="game">
+        <iframe
+          src="https://www.retrogames.cc/embed/25130-tamagotchi-usa-europe.html"
+          width="200"
+          height="190"
+          frameborder="no"
+          allowfullscreen="true"
+          webkitallowfullscreen="true"
+          mozallowfullscreen="true"
+          scrolling="no"
+        >
+        </iframe>
+      </div>
+    </div>
     <div class="container">
       <div class="megaWrapper my-auto well">
         <div class="row text-center">
@@ -22,7 +40,7 @@
             <br />
             <br />
 
-            <h1 class="text-center">rememberDat?</h1>
+            <h1 id="crt" class="text-center">rememberDat?</h1>
             <h2 class="text-center">rememberDat?</h2>
             <h3 class="text-center">rememberDat?</h3>
             <h4 class="text-center">rememberDat?</h4>
@@ -36,41 +54,12 @@
           <br />
 
           <div id="mainContentArea" class="mainWrapper browser-frame">
-            <div id="placeContentHere" class="wrapperThing">
-              <img
-                src="https://nothingaboutscotthere.files.wordpress.com/2014/12/weird-stuff-28.jpg"
-                alt="barbie-head"
-                id="image"
-                class="dialup"
-              />
-            </div>
-          </div>
-
-          <div class="gameWrapper">
-            <div class="col-12">
-              <div id="gameboy" class="container pocket">
-                <div class="gb">
-                  <img
-                    src="/assets/gameboy_photoshop.png"
-                    alt="Handheld Gameboy"
-                  />
-
-                  <div class="game">
-                    <iframe
-                      src="https://www.retrogames.cc/embed/25130-tamagotchi-usa-europe.html"
-                      width="200"
-                      height="148"
-                      frameborder="no"
-                      allowfullscreen="true"
-                      webkitallowfullscreen="true"
-                      mozallowfullscreen="true"
-                      scrolling="no"
-                    >
-                    </iframe>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <img
+              id="image"
+              src="https://nothingaboutscotthere.files.wordpress.com/2014/12/weird-stuff-28.jpg"
+              alt="barbie-head"
+              class="dialup"
+            />
           </div>
 
           <br />
@@ -91,6 +80,7 @@
             <br />
             <br />
           </div>
+          <div id="floaters" class="floaters"></div>
         </div>
       </div>
     </div>
@@ -103,7 +93,10 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"
     ></script>
+
     <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
     <script src="./js/content-landing.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </body>
 </html>
