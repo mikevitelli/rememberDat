@@ -313,3 +313,7 @@ body {
   z-index: 1000 !important;
   margin: auto;
 }
+
+#theImages {
+  position: fixed;
+}
