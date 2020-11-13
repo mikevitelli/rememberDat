@@ -307,3 +307,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+#search {
+  z-index: 1000 !important;
+}

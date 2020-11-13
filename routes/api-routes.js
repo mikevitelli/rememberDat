@@ -3,6 +3,8 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 const db = require("../models");
 const passport = require("../config/passport");
 const bingImageSearch = require("../services/bing");
+const shuffle = require("../utils/shuffle.js");
+const { use } = require("chai");
 // const user = require("../models/user");
 // const { JSONB } = require("sequelize/types");
 
@@ -19,8 +21,12 @@ module.exports = function(app) {
     if (!req.user) {
       window.location.replace("/");
     } else {
-      console.log(req.user);
-      const images = await bingImageSearch("90s").then(image => image);
+      const theUser = await db.User.findOne({ where: { id: req.user.id } });
+      const userCat = shuffle(theUser.dataValues.categories.split(","));
+      console.log(userCat);
+      const images = await bingImageSearch("90s " + userCat[0]).then(
+        image => image
+      );
       res.json(images);
     }
   });
@@ -74,7 +80,7 @@ module.exports = function(app) {
 
     await theUser.update({ categories: userCat }).then(() => {
       theUser.save();
-      console.log(theUser);
+      // console.log(theUser);
       res.json({});
     });
   });
