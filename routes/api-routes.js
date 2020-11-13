@@ -19,6 +19,7 @@ module.exports = function(app) {
     if (!req.user) {
       window.location.replace("/");
     } else {
+      console.log(req.user);
       const images = await bingImageSearch("90s").then(image => image);
       res.json(images);
     }
@@ -73,6 +74,7 @@ module.exports = function(app) {
 
     await theUser.update({ categories: userCat }).then(() => {
       theUser.save();
+      console.log(theUser);
       res.json({});
     });
   });
