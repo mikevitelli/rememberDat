@@ -11,17 +11,17 @@ $(document).ready(() => {
 
   //   when next button is pressed, content landing page is displayed
 
-  categoriesBtn.on("click", event => {
+  categoriesBtn.on("click", (event) => {
     event.preventDefault();
     window.location.replace("/categories");
   });
 
-  rememberDatBtn.on("click", event => {
+  rememberDatBtn.on("click", (event) => {
     event.preventDefault();
     rememberDatBtn.unbind("click");
     console.log("pressed");
-    $.get("/api/services/bing").then(res => {
-      res.forEach(image => {
+    $.get("/api/services/bing").then((res) => {
+      res.forEach((image) => {
         bingImages.push(image);
       });
       rememberDatBtn.on("click", () => {
@@ -35,12 +35,12 @@ const bingImages = [];
 i = 0;
 >>>>>>> main
 
-function createImage(i, image) {
+function createImage(image) {
   const img = document.createElement("img");
-  img.id = `picture${i}`;
+  // img.id = `picture${i}`;
   img.alt = image.alt;
   img.src = image.src;
-  img.classList.add("dialup");
+  img.classList.add("dialup", "draggable_handle");
   img.href = image.href;
   img.width = "400";
   img.height = "400";
@@ -49,7 +49,8 @@ function createImage(i, image) {
 }
 function addImage(bingImages) {
   if (i < bingImages.length) {
-    $(".mainWrapper").append(createImage(i, bingImages[i]));
+    $(".mainWrapper").append(createImage(bingImages[i]));
+    // dragElement(document.getElementById(`picture${i}`));
     console.log("click");
     i++;
     return false;
@@ -111,7 +112,7 @@ function dragElement(elem) {
 target = $(".browser-frame");
 Draggable.create(target, { trigger: "#drag-handle" });
 
-var handleResize = $("<div class='resize-handle'></div>").appendTo(target);
+const handleResize = $("<div class='resize-handle'></div>").appendTo(target);
 
 Draggable.create(handleResize, {
   type: "top,left",
