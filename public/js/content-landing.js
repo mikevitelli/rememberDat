@@ -1,46 +1,3 @@
-// $(document).ready(() => {
-//   const rememberDat = $(".remember-dat");
-//   rememberDat.on("click", event => {
-//     event.preventDefault();
-
-//     $.get("/api/services/bing", images => {
-//       console.log("click");
-//       // console.log(images.data);
-//       function createImage(image) {
-//         const img = document.createElement("img");
-//         img.alt = image.alt;
-//         img.src = image.src;
-//         img.href = image.href;
-//         img.width = "50";
-//         img.height = "50";
-//         console.log(img);
-//         return img;
-//       }
-//       // images.forEach(image => {
-//       //   body.appendChild(createImage(image));
-//       // });
-//     });
-
-console.log("loaded");
-// const bingImageSearch = require("../../services/bing");
-// const images = bingImageSearch("90s");
-const body = document.getElementById("body");
-
-function createImageNode(image) {
-  const img = document.createElement("img");
-  img.alt = image.alt;
-  img.src = image.src;
-  img.href = image.href;
-  img.width = "50";
-  img.height = "50";
-  console.log(img);
-  return img;
-}
-
-// images.forEach((image) => {
-//   body.appendChild(createImageNode(image));
-// });
-
 $(document).ready(() => {
   // getting references to form input
   const categoriesBtn = $("button#catBtn");
@@ -48,31 +5,64 @@ $(document).ready(() => {
 
   //   when next button is pressed, content landing page is displayed
 
-  categoriesBtn.on("click", (event) => {
+  categoriesBtn.on("click", event => {
     event.preventDefault();
     window.location.replace("/categories");
   });
 
-  rememberDatBtn.on("click", (event) => {
+  rememberDatBtn.on("click", event => {
     event.preventDefault();
+    rememberDatBtn.unbind("click");
     console.log("pressed");
+    $.get("/api/services/bing").then(res => {
+      res.forEach(image => {
+        bingImages.push(image);
+      });
+      rememberDatBtn.on("click", () => {
+        addImage(bingImages);
+      });
+    });
   });
 });
+
+const bingImages = [];
+i = 0;
+
+function createImage(i, image) {
+  const img = document.createElement("img");
+  img.id = `picture${i}`;
+  img.alt = image.alt;
+  img.src = image.src;
+  img.classList.add("dialup");
+  img.href = image.href;
+  img.width = "400";
+  img.height = "400";
+  console.log(img);
+  return img;
+}
+function addImage(bingImages) {
+  if (i < bingImages.length) {
+    $(".mainWrapper").append(createImage(i, bingImages[i]));
+    console.log("click");
+    i++;
+    return false;
+  }
+}
 
 // Make the GAMEBOY element draggable:
 dragElement(document.getElementById("gameboy"));
 
-function dragElement(elmnt) {
-  var pos1 = 0,
+function dragElement(elem) {
+  let pos1 = 0,
     pos2 = 0,
     pos3 = 0,
     pos4 = 0;
-  if (document.getElementById(elmnt.id + "header")) {
+  if (document.getElementById(elem.id + "header")) {
     // if present, the header is where you move the DIV from:
-    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+    document.getElementById(elem.id + "header").onmousedown = dragMouseDown;
   } else {
     // otherwise, move the DIV from anywhere inside the DIV:
-    elmnt.onmousedown = dragMouseDown;
+    elem.onmousedown = dragMouseDown;
   }
 
   function dragMouseDown(e) {
@@ -95,8 +85,8 @@ function dragElement(elmnt) {
     pos3 = e.clientX;
     pos4 = e.clientY;
     // set the element's new position:
-    elmnt.style.top = elmnt.offsetTop - pos2 + "px";
-    elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+    elem.style.top = elem.offsetTop - pos2 + "px";
+    elem.style.left = elem.offsetLeft - pos1 + "px";
   }
 
   function closeDragElement() {
