@@ -10,12 +10,32 @@ $(document).ready(() => {
     window.location.replace("/categories");
   });
 
+  const bingImages = [];
   rememberDatBtn.on("click", event => {
     event.preventDefault();
+    rememberDatBtn.unbind("click");
     console.log("pressed");
-    $.get("/api/services/bing");
+    $.get("/api/services/bing").then(res => {
+      res.forEach(image => {
+        bingImages.push(image);
+      });
+      rememberDatBtn.on("click", () => {
+        $(".mainWrapper").append();
+        addImage(imageIndex, bingImages);
+      });
+    });
   });
 });
+
+function addImage(imageIndex, bingImages) {
+  imageIndex = 0;
+  if (imageIndex < bingImages.length) {
+    console.log("this is:" + imageIndex);
+    imageIndex++;
+  } else {
+    console.log("end");
+  }
+}
 
 // Make the GAMEBOY element draggable:
 dragElement(document.getElementById("gameboy"));

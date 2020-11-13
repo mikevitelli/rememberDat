@@ -6,13 +6,19 @@ $(document).ready(() => {
 
   //   when next button is pressed, content landing page is displayed
 
-  nextBtn.on("click", (event) => {
+  nextBtn.on("click", event => {
+    // console.log("click");
     event.preventDefault();
-    getChoices();
-    window.location.replace("/content-landing");
+    const choices = getChoices();
+    console.log(choices);
+    $.post("/api/users/addcategory", {
+      categories: choices
+    }).then(() => {
+      window.location.replace("/content-landing");
+    });
   });
 
-  backBtn.on("click", (event) => {
+  backBtn.on("click", event => {
     event.preventDefault();
     window.location.replace("/");
   });
@@ -22,23 +28,27 @@ $(document).ready(() => {
 // const button = $(".lisaFrank");
 // // To add click event to elements having class change
 function clickSuccess(btn) {
-  console.log("click");
+  // console.log("click");
   btn.addClass("active");
   btn.addClass("btn-success");
   btn.removeClass("btn-danger");
   btn.unbind("click");
-  btn.on("click", function () {
+  btn.on("click", function() {
     clickDanger($(this));
   });
 }
 
 function getChoices() {
   const choices = [];
-  $(".active").each(function () {
-    console.log($("h3", this).text());
-    choices.push($(this).text().trim());
+  $(".active").each(function() {
+    // console.log($("h3", this).text());
+    choices.push(
+      $(this)
+        .text()
+        .trim()
+    );
   });
-  console.log(choices);
+  return choices;
 }
 
 function clickDanger(btn) {
@@ -46,15 +56,15 @@ function clickDanger(btn) {
   btn.addClass("btn-danger");
   btn.removeClass("btn-success");
   btn.unbind("click");
-  btn.on("click", function () {
+  btn.on("click", function() {
     clickSuccess($(this));
   });
 }
 
 function clickClick() {
-  $(".catBtn").each(function () {
+  $(".catBtn").each(function() {
     const btn = $(this);
-    btn.on("click", function () {
+    btn.on("click", function() {
       clickSuccess($(this));
     });
   });

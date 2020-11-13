@@ -1,11 +1,10 @@
 // Requiring our models and passport as we've configured it
-const isAuthenticated=require('../config/middleware/isAuthenticated')
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 const db = require("../models");
 const passport = require("../config/passport");
 const bingImageSearch = require("../services/bing");
-const user = require('../models/user');
-
-
+const user = require("../models/user");
+// const { JSONB } = require("sequelize/types");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -13,15 +12,14 @@ module.exports = function(app) {
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
-    res.json({
-      email: req.user.email,
-      id: req.user.id
-    });
+    res.json(req.user);
   });
 
-  app.get("/api/services/bing", (req, res) => {
-    console.log(bingImageSearch("90s").then(res => res));
-    res.json(bingImageSearch("90s"));
+  app.get("/api/services/bing", async (req, res) => {
+    const images = await bingImageSearch("90s").then(image => image);
+    console.log(images);
+    res.json(images);
+    // res.json(bingImageSearch("90s"));
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -30,7 +28,8 @@ module.exports = function(app) {
   app.post("/api/signup", (req, res) => {
     db.User.create({
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      categories: ""
     })
       .then(() => {
         res.redirect(307, "/api/login");
@@ -61,59 +60,33 @@ module.exports = function(app) {
     }
   });
 
-app.post("/api/users/addcategory", isAuthenticated, (req, res)=>{
-console.log ("adding category")
-console.log('user', req.user)
+  app.post("/api/users/addcategory", isAuthenticated, async (req, res) => {
+    // console.log("user", req);
+    // console.log("adding category");
+    const userCat = req.body.categories.toString();
+    const userID = req.user.id;
+    // Find a user and obtain id
+    console.log(userCat);
+    const theUser = await db.User.findOne({ where: { id: userID } });
 
-
-
-// Find a user and obtain id
-
-
- db.User.findOne({
-
-  where: {
-    id:req.user.id
-  },
-  include: [db.Category]
-
- }).then(function(user) {
-   db.Category.findOne({
-     where: {
-       catName: "music"
-     }
-   }).then(category => {
-
-    user.addCategory(category )
-
-    res.json(user)
-   })
-
- 
-
-  
-
-  })
-});
-
-
- // POST route for saving a new todo
- app.post("/api/todos", function(req, res) {
-  console.log(req.body);
-  // create takes an argument of an object describing the item we want to
-  // insert into our table. In this case we just we pass in an object with a text
-  // and complete property (req.body)
-  db.Todo.create({
-    text: req.body.text,
-    complete: req.body.complete
-  }).then(function(dbTodo) {
-    // We have access to the new todo as an argument inside of the callback function
-    res.json(dbTodo);
+    await theUser.update({ categories: userCat }).then(user => {
+      user.save();
+      res.json({});
+    });
   });
-});
 
-
-
-
+  // POST route for saving a new todo
+  app.post("/api/todos", (req, res) => {
+    console.log(req.body);
+    // create takes an argument of an object describing the item we want to
+    // insert into our table. In this case we just we pass in an object with a text
+    // and complete property (req.body)
+    db.Todo.create({
+      text: req.body.text,
+      complete: req.body.complete
+    }).then(dbTodo => {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(dbTodo);
+    });
+  });
 };
-
