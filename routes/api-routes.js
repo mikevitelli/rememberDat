@@ -17,7 +17,7 @@ module.exports = function(app) {
 
   app.get("/api/services/bing", isAuthenticated, async (req, res) => {
     if (!req.user) {
-      res.redirect("/");
+      window.location.replace("/");
     } else {
       const images = await bingImageSearch("90s").then(image => image);
       res.json(images);
