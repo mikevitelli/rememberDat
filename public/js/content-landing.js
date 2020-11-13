@@ -10,7 +10,6 @@ $(document).ready(() => {
     window.location.replace("/categories");
   });
 
-  const bingImages = [];
   rememberDatBtn.on("click", event => {
     event.preventDefault();
     rememberDatBtn.unbind("click");
@@ -20,20 +19,33 @@ $(document).ready(() => {
         bingImages.push(image);
       });
       rememberDatBtn.on("click", () => {
-        $(".mainWrapper").append();
-        addImage(imageIndex, bingImages);
+        addImage(bingImages);
       });
     });
   });
 });
 
-function addImage(imageIndex, bingImages) {
-  imageIndex = 0;
-  if (imageIndex < bingImages.length) {
-    console.log("this is:" + imageIndex);
-    imageIndex++;
-  } else {
-    console.log("end");
+const bingImages = [];
+i = 0;
+
+function createImage(i, image) {
+  const img = document.createElement("img");
+  img.id = `picture${i}`;
+  img.alt = image.alt;
+  img.src = image.src;
+  img.classList.add("dialup");
+  img.href = image.href;
+  img.width = "400";
+  img.height = "400";
+  console.log(img);
+  return img;
+}
+function addImage(bingImages) {
+  if (i < bingImages.length) {
+    $(".mainWrapper").append(createImage(i, bingImages[i]));
+    console.log("click");
+    i++;
+    return false;
   }
 }
 
