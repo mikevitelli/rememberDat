@@ -33,4 +33,8 @@ module.exports = function (app) {
   app.get("/categories", isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, "../pages/categories.html"));
   });
+
+  app.get("/main", (req, res) => {
+    res.sendFile(path.join(__dirname, "../pages/mainContent.html"));
+  });
 };

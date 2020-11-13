@@ -7,9 +7,15 @@ $(document).ready(() => {
   //   when next button is pressed, content landing page is displayed
 
   nextBtn.on("click", event => {
+    // console.log("click");
     event.preventDefault();
-    getChoices();
-    // window.location.replace("/content-landing");
+    const choices = getChoices();
+    console.log(choices);
+    $.post("/api/users/addcategory", {
+      categories: choices
+    }).then(() => {
+      window.location.replace("/content-landing");
+    });
   });
 
   backBtn.on("click", event => {
@@ -22,7 +28,7 @@ $(document).ready(() => {
 // const button = $(".lisaFrank");
 // // To add click event to elements having class change
 function clickSuccess(btn) {
-  console.log("click");
+  // console.log("click");
   btn.addClass("active");
   btn.addClass("btn-success");
   btn.removeClass("btn-danger");
@@ -35,14 +41,14 @@ function clickSuccess(btn) {
 function getChoices() {
   const choices = [];
   $(".active").each(function() {
-    console.log($("h3", this).text());
+    // console.log($("h3", this).text());
     choices.push(
       $(this)
         .text()
         .trim()
     );
   });
-  console.log(choices);
+  return choices;
 }
 
 function clickDanger(btn) {
