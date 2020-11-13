@@ -309,5 +309,7 @@ body {
 }
 
 #search {
+  position: relative;
   z-index: 1000 !important;
+  margin: auto;
 }
