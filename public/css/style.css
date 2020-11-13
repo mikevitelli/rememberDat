@@ -312,4 +312,15 @@ body {
   position: relative;
   z-index: 1000 !important;
   margin: auto;
+  
+#theImages {
+  position: fixed;
+<<<<<<< HEAD
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+=======
+
+>>>>>>> 3ebe864387b199dba5deded643908e1e3a92e5bd
 }
