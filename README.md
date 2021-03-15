@@ -28,6 +28,16 @@ WHEN I select my topic I am able to get my dopamine dose of the good ol' days.
 THROUGH APIs and features that deliver curated 90s era content.
 ```
 
+## Usage
+
+- visit our [demo](https://remember-dat.herokuapp.com/)
+
+- choose **signup** and create an account
+
+- choose which **categories** you'd like to explore
+
+- enjoy and feel free to **login** next time!
+
 ## Screenshots
 
 Your Journey begins here:
