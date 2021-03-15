@@ -31,6 +31,7 @@ THROUGH APIs and features that deliver curated 90s era content.
 ## Screenshots
 
 Your Journey begins here:
+
 ![startpage screenshot](public/assets/startpage.gif)
 
 <!-- When I Click to begin my journey:
