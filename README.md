@@ -6,7 +6,7 @@ A website that brings you back to the simpler times.
 
 ## Description
 
-RememberDat is a Nostalgia engine that generates sweet, sweet dopamine through memories and media. Users will get a “blast from the past” through music, news articles, photos/memes, games, and aesthetic UI. This is a fullstack application hosted on Heroku.
+RememberDat is a Nostalgia engine that generates sweet, sweet dopamine through memories and media. Users will get a “blast from the past” through music, news articles, photos/memes, games, and aesthetic UI.
 
 [Live Demo](https://remember-dat.herokuapp.com/)
 
