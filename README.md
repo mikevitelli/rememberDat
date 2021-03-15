@@ -1,6 +1,6 @@
 ![logo](./public/assets/rememberDat_logo_startpage.png)
 
-# rememberDat?
+# RememberDat?
 
 A website that brings you back to the simpler times.
 
