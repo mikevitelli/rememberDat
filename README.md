@@ -45,9 +45,11 @@ _Insert Example of a Topic when it is clicked_-->
 
 ## Packages, APIs, and Technologies used:
 
+This project is hosted on Heroku, utilzing the JawsDB integration.
+
 ### Packages
 
-This Project uses Express, Travis-CI, Handlebars, Sequelize, Eslint, and Passport.
+This project uses Express, Travis-CI, Handlebars, Sequelize, Eslint, and Passport.
 
 ### APIs
 
