@@ -6,7 +6,9 @@ A website that brings you back to the simpler times.
 
 ## Description
 
-RememberDat is a Nostalgia engine that generates sweet, sweet dopamine through memories and media. Users will get a “blast from the past” through music, news articles, photos/memes, games, and aesthetic UI.
+RememberDat is a Nostalgia engine that generates sweet, sweet dopamine through memories and media. Users will get a “blast from the past” through music, news articles, photos/memes, games, and aesthetic UI. This is a fullstack application hosted on Heroku.
+
+[Live Demo](https://remember-dat.herokuapp.com/)
 
 ## User Story
 
@@ -54,20 +56,28 @@ APIs from Bing, Pinterest, and UrbanDictionary.
 
 ## The rememberDat? Nostalgia Task Force:
 
-[@mikevitelli](https://github.com/mikevitelli)
+[Mike Vitelli](https://github.com/mikevitelli)
 
-[@kkaltenheuser](https://github.com/kkaltenheuser)
+[Karen Kaltenheuser](https://github.com/kkaltenheuser)
 
-[@rrrossettiii](https://github.com/rrrossettiii)
+[Dante Ivec](https://github.com/rrrossettiii)
 
-[@travionfrancis](https://github.com/travionfrancis)
+[Travion Francis](https://github.com/travionfrancis)
 
-[@jidrees](https://github.com/jidrees)
+[Jay Idrees](https://github.com/jidrees)
+
+## Installation Instructions
+
+- You must first have Node installed on your computer
+- Clone the repository
+- Install the required packages with `npm install`
+- Run `nodemon watch`
 
 ## License
 
 This project is licensed under the MIT license.
 
-## Disclaimer
 
-This project was made for educational purposes only.
+## Contributions
+
+Submit a PR documenting any proposed additons, and we'll reach out!
